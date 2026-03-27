@@ -46,7 +46,11 @@ set(CTR_DRBG_128_BIT_KEY_WARNING "${WARNING_BORDER}"
                          "${CTR_DRBG_128_BIT_KEY_WARN_L3}"
                          "${WARNING_BORDER}")
 
-find_package(PythonInterp)
+# 现代写法：同时查找解释器和开发库（如果需要）
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
+# 如果你后续代码用到了 ${PYTHON_EXECUTABLE}，请改为：
+set(PYTHON_EXECUTABLE ${Python3_EXECUTABLE})
 find_package(Perl)
 if(PERL_FOUND)
 
